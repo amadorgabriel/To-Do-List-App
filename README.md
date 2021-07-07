@@ -37,7 +37,7 @@ Antes de começar você vai precisar ter instalado na sua máquina as ferramenta
 ## :octocat: Clone o Projeto
 ```git
   # Clonando
-  ❯ git clone https://github.com/amador2014/Podcastr.git
+  ❯ git clone https://github.com/amador2014/To-Do-List-App.git
  ```
 
 
@@ -46,4 +46,24 @@ Antes de começar você vai precisar ter instalado na sua máquina as ferramenta
 ### Rodando App Web
 ```bash
  # Acesse a pasta web no terminal
- $ cd web
+ $ cd to-do-list
+ 
+ # Instale as dependências
+ $ yarn install
+
+ # Execute a fake api
+ $ yarn server
+
+ # Execute o Projeto
+ $ yarn dev 
+```
+
+---
+
+<p align="center" > 
+  :heart: Projeto desenvolvido com :heart:
+</p>
+
+
+
+ 
