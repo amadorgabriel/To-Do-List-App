@@ -1,29 +1,67 @@
-import { useState } from "react";
+import { useState, useContext, forwardRef, ForwardRefRenderFunction } from "react";
+import { toast } from 'react-toastify';
 
-import trashIcon from "../../assets/trash-icon.png";
+import { BiTrash } from "react-icons/bi";
+import { TaskContext } from "../../contexts/TaskContext";
 
-import "./style.css";
+import "./style.scss";
+import 'react-toastify/dist/ReactToastify.css';
 
-export interface TaskItemProps {
+export interface TaskItemProps  {
   id: number;
   name: string;
-  isFinished?: boolean;
 }
 
-export const TaskItem = ({ name, isFinished = false }: TaskItemProps) => {
+export const TaskItemRenderFn: ForwardRefRenderFunction<HTMLDivElement, TaskItemProps> = ({id, name, ...rest}, ref ) => {
+  const [checkValue, setCheckValue] = useState(false);
+  const { deleteTaskById } = useContext(TaskContext);
 
-  const [ checkValue, setCheckValue] = useState(false)
+  const handleWithDeleteTask = () => {
+    deleteTaskById(id);
+
+    toast('🚀 Removido com sucesso! ', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  }
 
   return (
-    <div className="task">
-      <div className="task-input">
-        <input type="checkbox" onChange={() => {setCheckValue(!checkValue)}}/>
+    <div
+      {...rest}
+      ref={ref}
+      className={`container-input ${checkValue ? "container-checked" : null}`}
+      onClick={() => {
+        setCheckValue(!checkValue);
+      }}
+    >
+      <div>
+        <input
+          type="checkbox"
+          onChange={() => {
+            setCheckValue(!checkValue);
+          }}
+          checked={checkValue}
+        />
         <p>{name}</p>
       </div>
 
-      <button className="task-button" disabled={checkValue}>
-        <img src={trashIcon} alt="Trash Icon" />
+      <button
+        disabled={checkValue}
+        onClick={() => {
+          window.confirm("Tem certeza que deseja deletar este item?") &&
+            handleWithDeleteTask()
+        }}
+      >
+        <BiTrash size={22} className="icon" />
       </button>
     </div>
   );
 };
+
+
+export const TaskItem = forwardRef(TaskItemRenderFn) 

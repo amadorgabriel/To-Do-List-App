@@ -11,11 +11,11 @@
 <div id="tabela-de-conteudo" />
 
 ## :point_right: Tabela de Conteúdo
-- [Tabela de Conteúdos](#tabela-de-conteudo)
-- [Tecnologias](#tech)
-- [Pre Requisitos](#pre-requisitos)
-- [Clone o Projeto](#clonando)
-  - [Rodando Web](#run-web)
+- [:point_right: Tabela de Conteúdo](#point_right-tabela-de-conteúdo)
+- [:rocket: Tecnologias](#rocket-tecnologias)
+- [📦️ Pré-Requisitos](#️-pré-requisitos)
+- [:octocat: Clone o Projeto](#octocat-clone-o-projeto)
+  - [Rodando App Web](#rodando-app-web)
 
 
 <div id="tech" />
@@ -50,9 +50,6 @@ Antes de começar você vai precisar ter instalado na sua máquina as ferramenta
  
  # Instale as dependências
  $ yarn install
-
- # Execute a fake api
- $ yarn server
 
  # Execute o Projeto
  $ yarn dev 
