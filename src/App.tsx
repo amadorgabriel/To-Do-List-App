@@ -53,15 +53,18 @@ function App() {
     }
   };
 
+  const reorder = (list: TaskItemProps[], startIndex: number , endIndex: number) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+  };
+
   function handleOnDragEnd(result: any) {
     if (!result.destination) return;
 
-    let newTaskList = taskList;
-
-    const [reorderedItem] = newTaskList.splice(result.source.index, 1);
-    newTaskList.splice(result.destination.index, 0, reorderedItem);
-
-    overWriteTaskList(newTaskList);
+		overWriteTaskList(reorder(taskList, result.source.index, result.destination.index));
   }
 
   return (
@@ -90,8 +93,8 @@ function App() {
                   <div {...provided.droppableProps} ref={provided.innerRef}>
                     {taskList?.map((task, index) => (
                       <Draggable
-                        key={index}
-                        draggableId={String(index)}
+                        key={task.id}
+                        draggableId={String(task.id)}
                         index={index}
                       >
                         {(provided: DraggableProvided) => {                        
