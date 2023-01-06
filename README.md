@@ -1,6 +1,6 @@
 
 <p align="center" >
-  <img align="center" width="250px" src="https://istic.senai.io/assets/images/Logo-ISTIC.svg" />
+  <img align="center" height="180px" src="https://www.senairs.org.br/sites/default/files/styles/2x1_md/public/bean--view-media--item/tecnologia.png?itok=Fcj29-Mi" />
 </p>
 
 <p align="center" >
